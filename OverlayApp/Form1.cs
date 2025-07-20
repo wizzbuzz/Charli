@@ -45,7 +45,7 @@ public partial class Form1 : Form
         // Create tray icon
         trayIcon = new NotifyIcon();
         trayIcon.Text = "Charli";
-        trayIcon.Icon = SystemIcons.Application;
+        trayIcon.Icon = new Icon("favicon.ico");
         trayIcon.ContextMenuStrip = trayMenu;
         trayIcon.Visible = true;
         trayIcon.DoubleClick += (s, e) => ShowThisForm();
@@ -59,10 +59,11 @@ public partial class Form1 : Form
         this.Opacity = 0;
         this.Hide();
         this.Text = "Charli";
+        this.Icon = new Icon("favicon.ico");
 
         //Window Settings
         this.Width = 300;
-        this.Height = 300;
+        this.Height = 180;
         this.FormBorderStyle = FormBorderStyle.FixedSingle;
         this.MaximizeBox = false;
         this.MinimizeBox = true;
@@ -116,7 +117,7 @@ public partial class Form1 : Form
         Button saveButton = new Button() { Text = "Save", AutoSize = true };
         this.Controls.Add(saveButton);
 
-        saveButton.Location = new Point(10, 90);
+        saveButton.Location = new Point(10, 100);
         saveButton.Click += (s, e) =>
         {
             settings.UseCtrl = checkBoxCtrl.Checked;

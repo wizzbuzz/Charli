@@ -13,3 +13,4 @@ C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\obj\Debug\net9.0-
 C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\obj\Debug\net9.0-windows\OverlayApp.genruntimeconfig.cache
 C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\obj\Debug\net9.0-windows\ref\OverlayApp.dll
 C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\obj\Debug\net9.0-windows\OverlayApp.sourcelink.json
+C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\bin\Debug\net9.0-windows\favicon.ico
