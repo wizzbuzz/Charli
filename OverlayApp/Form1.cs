@@ -10,6 +10,8 @@ public partial class Form1 : Form
     private const int WM_KEYDOWN = 0x0100;              // Windows message: key down
     private const int WM_KEYUP = 0x0101;                // Windows message: key up
 
+    private UserSettings settings;
+
     // Form display
     private NotifyIcon trayIcon;
     private ContextMenuStrip trayMenu;
@@ -64,6 +66,7 @@ public partial class Form1 : Form
         this.MaximizeBox = false;
         this.MinimizeBox = true;
 
+
         //Form Contents
         Label title = new Label();
         title.AutoSize = true;
@@ -89,6 +92,13 @@ public partial class Form1 : Form
         CheckBox checkBoxShift = new CheckBox() { Text = "Shift", AutoSize = true };
         ComboBox comboBoxMainKey = new ComboBox() { Width = 100, DropDownStyle = ComboBoxStyle.DropDownList };
 
+        //User Settings
+        settings = UserSettings.Load();
+        checkBoxCtrl.Checked = settings.UseCtrl;
+        checkBoxAlt.Checked = settings.UseAlt;
+        checkBoxShift.Checked = settings.UseShift;
+        comboBoxMainKey.SelectedItem = settings.MainKey;
+
         panel.Controls.Add(checkBoxCtrl);
         panel.Controls.Add(checkBoxAlt);
         panel.Controls.Add(checkBoxShift);
@@ -100,6 +110,19 @@ public partial class Form1 : Form
             .ToList();
 
         comboBoxMainKey.DataSource = keys;
+
+        Button saveButton = new Button() { Text = "Save", AutoSize = true };
+        this.Controls.Add(saveButton);
+
+        saveButton.Click += (s, e) =>
+        {
+            settings.UseCtrl = checkBoxCtrl.Checked;
+            settings.UseAlt = checkBoxAlt.Checked;
+            settings.UseShift = checkBoxShift.Checked;
+            settings.MainKey = (Keys)comboBoxMainKey.SelectedItem!;
+            settings.Save();
+            MessageBox.Show("Hotkey saved!", "Settings");
+        };
     }
 
     private void ShowThisForm()
@@ -152,16 +175,16 @@ public partial class Form1 : Form
             bool alt = (Control.ModifierKeys & Keys.Alt) == Keys.Alt;
             bool shift = (Control.ModifierKeys & Keys.Shift) == Keys.Shift;
 
-            if ((Keys)wParam == (Keys)WM_KEYDOWN)
+            if (wParam == (IntPtr)WM_KEYDOWN)
             {
                 // Hotkey just pressed
-                if (!isHotkeyDown && ctrl && alt && key == HotkeyKey)
+                if (!isHotkeyDown && key == settings.MainKey && ctrl == settings.UseCtrl && alt == settings.UseAlt && shift == settings.UseShift)
                 {
                     isHotkeyDown = true;
                     this.BeginInvoke((Action)(() => ShowOverlay()));
                 }
             }
-            else if ((Keys)wParam == (Keys)WM_KEYUP)
+            else if (wParam == (IntPtr)WM_KEYUP)
             {
                 // Hotkey released
                 if (isHotkeyDown && key == HotkeyKey)
