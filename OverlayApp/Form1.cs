@@ -10,6 +10,10 @@ public partial class Form1 : Form
     private const int WM_KEYDOWN = 0x0100;              // Windows message: key down
     private const int WM_KEYUP = 0x0101;                // Windows message: key up
 
+    // Form display
+    private NotifyIcon trayIcon;
+    private ContextMenuStrip trayMenu;
+
     // --- Global variables for keyboard hooks ---
     private static IntPtr _hookID = IntPtr.Zero;        // Handle for the main keyboard hook
     private static LowLevelKeyboardProc? _proc;         // Delegate for main hook callback
@@ -32,9 +36,35 @@ public partial class Form1 : Form
     {
         InitializeComponent();
 
+        // Create a context menu for the tray icon
+        trayMenu = new ContextMenuStrip();
+        trayMenu.Items.Add("Exit", null, (s, e) => Application.Exit());
+
+        // Create tray icon
+        trayIcon = new NotifyIcon();
+        trayIcon.Text = "Overlay APp";
+        trayIcon.Icon = SystemIcons.Application;
+        trayIcon.ContextMenuStrip = trayMenu;
+        trayIcon.Visible = true;
+        trayIcon.DoubleClick += (s, e) => ShowThisForm();
+
         // Assign and install the main keyboard hook
         _proc = HookCallback;
         _hookID = SetHook(_proc);
+
+        this.ShowInTaskbar = false;
+        this.WindowState = FormWindowState.Minimized;
+        this.Opacity = 0;
+        this.Hide();
+    }
+
+    private void ShowThisForm()
+    {
+        this.Opacity = 1;
+        this.WindowState = FormWindowState.Normal;
+        this.Show();
+        this.BringToFront();
+        this.ShowInTaskbar = true;
     }
 
     // --- Windows API imports for setting keyboard hooks ---
@@ -222,6 +252,18 @@ public partial class Form1 : Form
     protected override void OnFormClosed(FormClosedEventArgs e)
     {
         UnhookWindowsHookEx(_hookID);
+
+        if (_diacriticalHookID != IntPtr.Zero)
+        {
+            UnhookWindowsHookEx(_diacriticalHookID);
+        }
+
+        if (trayIcon != null)
+        {
+            trayIcon.Visible = false;
+            trayIcon.Dispose();
+        }
+
         base.OnFormClosed(e);
     }
 }
