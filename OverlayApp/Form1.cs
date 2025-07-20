@@ -52,10 +52,54 @@ public partial class Form1 : Form
         _proc = HookCallback;
         _hookID = SetHook(_proc);
 
-        this.ShowInTaskbar = false;
-        this.WindowState = FormWindowState.Minimized;
-        this.Opacity = 0;
-        this.Hide();
+        // this.ShowInTaskbar = false;
+        // this.WindowState = FormWindowState.Minimized;
+        // this.Opacity = 0;
+        // this.Hide();
+
+        //Window Settings
+        this.Width = 300;
+        this.Height = 300;
+        this.FormBorderStyle = FormBorderStyle.FixedSingle;
+        this.MaximizeBox = false;
+        this.MinimizeBox = true;
+
+        //Form Contents
+        Label title = new Label();
+        title.AutoSize = true;
+        title.Text = "Charli Settings";
+        title.Location = new Point(10, 10);
+        title.Font = new Font(title.Font.FontFamily, 16);
+        this.Controls.Add(title);
+
+        Label hotkeySettings = new Label();
+        hotkeySettings.Text = "Hotkey";
+        hotkeySettings.Location = new Point(10, 50);
+        this.Controls.Add(hotkeySettings);
+
+        FlowLayoutPanel panel = new FlowLayoutPanel();
+        panel.FlowDirection = FlowDirection.LeftToRight;
+        panel.AutoSize = true;
+        panel.WrapContents = false;
+        panel.Location = new Point(10, 70);
+        this.Controls.Add(panel);
+
+        CheckBox checkBoxCtrl = new CheckBox() { Text = "Ctrl", AutoSize = true };
+        CheckBox checkBoxAlt = new CheckBox() { Text = "Alt", AutoSize = true };
+        CheckBox checkBoxShift = new CheckBox() { Text = "Shift", AutoSize = true };
+        ComboBox comboBoxMainKey = new ComboBox() { Width = 100, DropDownStyle = ComboBoxStyle.DropDownList };
+
+        panel.Controls.Add(checkBoxCtrl);
+        panel.Controls.Add(checkBoxAlt);
+        panel.Controls.Add(checkBoxShift);
+        panel.Controls.Add(comboBoxMainKey);
+
+        var keys = Enum.GetValues(typeof(Keys))
+            .Cast<Keys>()
+            .Where(k => (k >= Keys.A && k <= Keys.Z))
+            .ToList();
+
+        comboBoxMainKey.DataSource = keys;
     }
 
     private void ShowThisForm()
@@ -105,7 +149,8 @@ public partial class Form1 : Form
 
             // Check current modifier state
             bool ctrl = (Control.ModifierKeys & Keys.Control) == Keys.Control;
-            bool alt = (Control.ModifierKeys & Keys.Shift) == Keys.Shift;
+            bool alt = (Control.ModifierKeys & Keys.Alt) == Keys.Alt;
+            bool shift = (Control.ModifierKeys & Keys.Shift) == Keys.Shift;
 
             if ((Keys)wParam == (Keys)WM_KEYDOWN)
             {
@@ -246,6 +291,20 @@ public partial class Form1 : Form
         }
 
         return CallNextHookEx(_diacriticalHookID, nCode, wParam, lParam);
+    }
+
+    protected override void OnFormClosing(FormClosingEventArgs e)
+    {
+        if (e.CloseReason == CloseReason.UserClosing)
+        {
+            e.Cancel = true;
+            this.Hide();
+            this.ShowInTaskbar = false;
+        }
+        else
+        {
+            base.OnFormClosing(e);
+        }
     }
 
     // --- Clean up the keyboard hook on form close ---
