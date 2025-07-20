@@ -1,7 +1,8 @@
 # Charli
 
-Charli is a Windows Forms utility that provides an overlay UI to easily add diacritics.  
+Charli is a Windows Forms utility that provides an overlay UI to easily add diacritics.
 It runs in the system tray and uses low-level keyboard hooks to detect custom hotkey presses and display an overlay interface.
+This is my first C# project, so any feedback is welcome.
 
 ---
 
@@ -34,17 +35,14 @@ It runs in the system tray and uses low-level keyboard hooks to detect custom ho
    Restore dependencies and build the project:
    ```
 
-bash
-Copy
-Edit
+  ```bash
 dotnet build
+  ```
 Run the application:
 
-bash
-Copy
-Edit
+  ```bash
 dotnet run --project OverlayApp.csproj
-Usage
+  ```
 The app runs in the system tray with the icon defined by favicon.ico.
 
 The default hotkey is Ctrl + Shift + A, which you can customize in the settings window.
@@ -62,8 +60,8 @@ Contributions are welcome!
 Feel free to open issues or submit pull requests for bug fixes and new features.
 
 License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License.
 
 Contact
-Created by Joop\_
+Created by Wizzbuzz
 Feel free to reach out if you have questions or feedback.
