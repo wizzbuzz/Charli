@@ -1,13 +1,6 @@
-ChatGPT said:
-Sure! Here's a clean, clear README.md draft for your open-source project based on the file structure you shared and the context of your app (an overlay with keyboard hooks and tray icon):
+# Charli
 
-markdown
-Copy
-Edit
-
-# OverlayApp
-
-OverlayApp is a Windows Forms utility that provides an overlay UI activated by a global hotkey.  
+Charli is a Windows Forms utility that provides an overlay UI to easily add diacritics.  
 It runs in the system tray and uses low-level keyboard hooks to detect custom hotkey presses and display an overlay interface.
 
 ---
