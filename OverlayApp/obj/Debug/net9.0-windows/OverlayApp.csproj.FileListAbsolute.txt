@@ -1,0 +1,14 @@
+C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\bin\Debug\net9.0-windows\OverlayApp.exe
+C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\bin\Debug\net9.0-windows\OverlayApp.deps.json
+C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\bin\Debug\net9.0-windows\OverlayApp.runtimeconfig.json
+C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\bin\Debug\net9.0-windows\OverlayApp.dll
+C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\bin\Debug\net9.0-windows\OverlayApp.pdb
+C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\obj\Debug\net9.0-windows\OverlayApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\obj\Debug\net9.0-windows\OverlayApp.AssemblyInfoInputs.cache
+C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\obj\Debug\net9.0-windows\OverlayApp.AssemblyInfo.cs
+C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\obj\Debug\net9.0-windows\OverlayApp.csproj.CoreCompileInputs.cache
+C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\obj\Debug\net9.0-windows\OverlayApp.dll
+C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\obj\Debug\net9.0-windows\refint\OverlayApp.dll
+C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\obj\Debug\net9.0-windows\OverlayApp.pdb
+C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\obj\Debug\net9.0-windows\OverlayApp.genruntimeconfig.cache
+C:\Users\Joop_\Documents\_Projects\Websites\Allkeys\OverlayApp\obj\Debug\net9.0-windows\ref\OverlayApp.dll
