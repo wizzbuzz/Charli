@@ -29,11 +29,11 @@ This is my first C# project, so any feedback is welcome.
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/yourusername/OverlayApp.git
-   cd OverlayApp
-   Restore dependencies and build the project:
-   ```
+```bash
+git clone https://github.com/yourusername/OverlayApp.git
+cd OverlayApp
+```
+Restore dependencies and build the project:
 
   ```bash
 dotnet build
