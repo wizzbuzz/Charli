@@ -16,29 +16,6 @@ It runs in the system tray and uses low-level keyboard hooks to detect custom ho
 
 ---
 
-## File Structure
-
-OverlayApp/
-├── bin/ # Build output directory
-├── obj/ # Build intermediate files
-├── favicon.ico # Icon file used for tray and window icon
-├── Form1.cs # Main form logic and keyboard hook handling
-├── Form1.Designer.cs # Designer-generated form layout code
-├── OverlayApp.csproj # Project file (C# .NET 9)
-├── OverlayForm.cs # Overlay window implementation
-├── Program.cs # Application entry point
-├── UserSettings.cs # User settings management (hotkey preferences)
-├── allkeys.cs # (Likely key mapping or constants)
-├── Allkeys.sln # Solution file
-├── Charli icon.png # Icon asset for project (possibly used during design)
-├── Charli icon.psd # Source Photoshop file for icon asset
-
-yaml
-Copy
-Edit
-
----
-
 ## Getting Started
 
 ### Prerequisites
