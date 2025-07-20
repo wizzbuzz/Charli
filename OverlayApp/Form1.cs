@@ -25,7 +25,7 @@ public partial class Form1 : Form
 
     // --- Define hotkey combination (Ctrl + Alt + A) ---
     private const Keys HotkeyKey = Keys.A;
-    private const Keys HotkeyModifiers = Keys.Control | Keys.Alt;
+    private const Keys HotkeyModifiers = Keys.Control | Keys.Shift;
 
     // --- Form constructor ---
     public Form1()
@@ -75,7 +75,7 @@ public partial class Form1 : Form
 
             // Check current modifier state
             bool ctrl = (Control.ModifierKeys & Keys.Control) == Keys.Control;
-            bool alt = (Control.ModifierKeys & Keys.Alt) == Keys.Alt;
+            bool alt = (Control.ModifierKeys & Keys.Shift) == Keys.Shift;
 
             if ((Keys)wParam == (Keys)WM_KEYDOWN)
             {
@@ -195,7 +195,15 @@ public partial class Form1 : Form
                         // Compose base character with diacritical
                         string diacritical = outputs[idx.Value];
 
-                        string keyChar = ((char)vkCode).ToString();
+                        byte[] keyboardState = new byte[256];
+                        GetKeyboardState(keyboardState);
+
+                        uint scanCode = MapVirtualKey((uint)vkCode, 0);
+                        StringBuilder sb = new StringBuilder(2);
+
+                        ToUnicode((uint)vkCode, scanCode, keyboardState, sb, sb.Capacity, 0);
+                        string keyChar = sb.ToString();
+                        // string keyChar = ((char)vkCode).ToString();
                         output = keyChar + diacritical;
                     }
 
