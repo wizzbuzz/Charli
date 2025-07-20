@@ -6,6 +6,10 @@ This is my first C# project, so any feedback is welcome.
 
 ---
 
+## TODO
+- Add color customization
+- Add diacritics customization
+
 ## Features
 
 - Global hotkey support with customizable modifiers and main key
