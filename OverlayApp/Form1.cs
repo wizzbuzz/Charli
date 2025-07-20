@@ -44,7 +44,7 @@ public partial class Form1 : Form
 
         // Create tray icon
         trayIcon = new NotifyIcon();
-        trayIcon.Text = "Overlay APp";
+        trayIcon.Text = "Charli";
         trayIcon.Icon = SystemIcons.Application;
         trayIcon.ContextMenuStrip = trayMenu;
         trayIcon.Visible = true;
@@ -54,10 +54,11 @@ public partial class Form1 : Form
         _proc = HookCallback;
         _hookID = SetHook(_proc);
 
-        // this.ShowInTaskbar = false;
-        // this.WindowState = FormWindowState.Minimized;
-        // this.Opacity = 0;
-        // this.Hide();
+        this.ShowInTaskbar = false;
+        this.WindowState = FormWindowState.Minimized;
+        this.Opacity = 0;
+        this.Hide();
+        this.Text = "Charli";
 
         //Window Settings
         this.Width = 300;
@@ -70,7 +71,7 @@ public partial class Form1 : Form
         //Form Contents
         Label title = new Label();
         title.AutoSize = true;
-        title.Text = "Charli Settings";
+        title.Text = "Settings";
         title.Location = new Point(10, 10);
         title.Font = new Font(title.Font.FontFamily, 16);
         this.Controls.Add(title);
@@ -103,6 +104,7 @@ public partial class Form1 : Form
         panel.Controls.Add(checkBoxAlt);
         panel.Controls.Add(checkBoxShift);
         panel.Controls.Add(comboBoxMainKey);
+        panel.Size = new Size(300, 30);
 
         var keys = Enum.GetValues(typeof(Keys))
             .Cast<Keys>()
@@ -114,6 +116,7 @@ public partial class Form1 : Form
         Button saveButton = new Button() { Text = "Save", AutoSize = true };
         this.Controls.Add(saveButton);
 
+        saveButton.Location = new Point(10, 90);
         saveButton.Click += (s, e) =>
         {
             settings.UseCtrl = checkBoxCtrl.Checked;
@@ -233,7 +236,7 @@ public partial class Form1 : Form
     {
         if (overlay != null && !overlay.IsDisposed)
         {
-            overlay.Hide();
+            // overlay.Hide();
         }
 
         // If user selected a diacritical, install a one-time hook to handle next key

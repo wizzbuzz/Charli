@@ -132,7 +132,6 @@ namespace OverlayApp
             {
                 // Store the selected diacritical index and close the overlay
                 SelectedDiacriticalIndex = slice % sliceLabels.Length;
-                Console.Beep();
                 Console.WriteLine(SelectedDiacriticalIndex);
                 this.Close();
             }
