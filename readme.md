@@ -59,13 +59,12 @@ Press your hotkey to toggle the overlay window.
 
 To exit the app, right-click the tray icon and choose Exit.
 
-Contributing
+###Contributing
 Contributions are welcome!
 Feel free to open issues or submit pull requests for bug fixes and new features.
 
-License
+###License
 This project is licensed under the MIT License.
 
 Contact
 Created by Wizzbuzz
-Feel free to reach out if you have questions or feedback.
